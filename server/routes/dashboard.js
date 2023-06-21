@@ -22,5 +22,7 @@ router.delete(
 	isLoggedIn,
 	dashboardController.dashboardDeleteNote
 );
+router.get('/dashboard/add', isLoggedIn, dashboardController.dashboardAddNote);
+router.post('/dashboard/add', isLoggedIn, dashboardController.dashboardAddNoteSubmit);
 
 module.exports = router;
