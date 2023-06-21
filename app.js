@@ -5,7 +5,6 @@ const expressLayouts = require('express-ejs-layouts');
 const connectDB = require('./server/config/db');
 const session = require('express-session');
 const passport = require('passport');
-const MongoStrore = require('connect-mongo');
 const MongoStore = require('connect-mongo');
 
 const app = express();
@@ -15,7 +14,8 @@ app.use(
 	session({
 		secret: 'keyboard cat',
 		resave: false,
-		saveUninitialized: MongoStore.create({
+		saveUninitialized: true,
+		store: MongoStore.create({
 			mongoUrl: process.env.MONGODB_URI,
 		}),
 		// cookie: { maxAge: new Date(Date.now() + 3600000) },

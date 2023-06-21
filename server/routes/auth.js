@@ -35,7 +35,7 @@ passport.use(
 	)
 );
 
-// Google login route
+// Google Login Route
 router.get(
 	'/auth/google',
 	passport.authenticate('google', { scope: ['email', 'profile'] })
@@ -45,23 +45,22 @@ router.get(
 router.get(
 	'/google/callback',
 	passport.authenticate('google', {
-		successRedirect: '/dashboard',
 		failureRedirect: '/login-failure',
+		successRedirect: '/dashboard',
 	})
 );
 
-//Route if something goes wrong
-
+// Route if something goes wrong
 router.get('/login-failure', (req, res) => {
 	res.send('Something went wrong...');
 });
 
-//Destroy user session
+// Destroy user session
 router.get('/logout', (req, res) => {
 	req.session.destroy((error) => {
 		if (error) {
 			console.log(error);
-			res.send('Error logging out');
+			res.send('Error loggin out');
 		} else {
 			res.redirect('/');
 		}
@@ -69,6 +68,7 @@ router.get('/logout', (req, res) => {
 });
 
 // Presist user data after successful authentication
+
 
 passport.serializeUser(function (user_id, done) {
 	done(null, user_id);
@@ -88,6 +88,6 @@ passport.deserializeUser(async (id, done) => {
 	} catch (error) {
 		return done(error);
 	}
-});
+
 
 module.exports = router;
