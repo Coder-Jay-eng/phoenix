@@ -5,7 +5,7 @@ const NoteSchema = new Schema({
 
 	user: {
 		type: Schema.ObjectId,
-		ref: 'user',
+		ref: 'User',
 	},
 	title: {
 		type: String,
@@ -16,6 +16,10 @@ const NoteSchema = new Schema({
 		required: true,
 	},
 	createdAt: {
+		type: Date,
+		default: Date.now(),
+	},
+	updatedAt: {
 		type: Date,
 		default: Date.now(),
 	},
