@@ -25,7 +25,7 @@ exports.dashboard = async (req, res) => {
 			{
 				$project: {
 					title: { $substr: ['$title', 0, 30] },
-					body: { $substr: ['$body', 0, 50] },
+					body: { $substr: ['$body', 0, 100] },
 				},
 			},
 		])
@@ -69,5 +69,26 @@ exports.dashboardViewNote = async (req, res) => {
 		res.send('Oooops! Something went wrong.');
 	}
 };
+/*
+PUT
+Update Specific Note
+*/
 
-exports.dashboardUpdateNote = async (req, res) => {};
+exports.dashboardUpdateNote = async (req, res) => {
+	try {
+		await Note.findOneAndUpdate(
+			{
+				_id: req.params.id,
+			},
+			{
+				title: req.body.title,
+				body: req.body.body,
+			}
+		).where({
+			user: req.user.id,
+		});
+		res.redirect('/dashboard');
+	} catch (error) {
+		console.log(error);
+	}
+};

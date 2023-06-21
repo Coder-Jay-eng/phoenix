@@ -17,7 +17,7 @@
       </div>
     </div>
 
-    <form action="" method="POST" class="position-relative">
+    <form action="/dashboard/item/<%= noteID %>?_method=PUT" method="POST" class="position-relative">
         <div class="form-group mb-4 position-absolute" style="left:1px; top:1px; right: 1px;">
           <input type="text" class="form-control fw-bold border-0 fs-4" id="title" name="title" value="<%= note.title %>" placeholder="Title">
         </div>
