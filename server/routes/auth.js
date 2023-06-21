@@ -70,16 +70,24 @@ router.get('/logout', (req, res) => {
 
 // Presist user data after successful authentication
 
-passport.serializeUser(function (user, done) {
-	done(null, user.id);
+passport.serializeUser(function (user_id, done) {
+	done(null, user_id);
 });
 
-// Retrieve user sata from session
+// Retrieve user data from session
 
-passport.deserializeUser(function (id, done) {
-	User.findById(id, function (err, user) {
-		done(err, user);
-	});
+// passport.deserializeUser(function (id, done) {
+// 	User.findById(id, function (err, user) {
+// 		done(err, user);
+// 	});
+// });
+
+passport.deserializeUser(async (id, done) => {
+	try {
+		return done(null, await User.findById(id));
+	} catch (error) {
+		return done(error);
+	}
 });
 
 module.exports = router;
