@@ -68,8 +68,9 @@ router.get('/logout', (req, res) => {
 });
 
 // Presist user data after successful authentication
-passport.serializeUser(function (user, done) {
-	done(null, user.id);
+
+passport.serializeUser(function (user_id, done) {
+	done(null, user_id);
 });
 
 // Retrieve user data from session.
