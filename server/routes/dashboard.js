@@ -17,5 +17,10 @@ router.put(
 	isLoggedIn,
 	dashboardController.dashboardUpdateNote
 );
+router.delete(
+	'/dashboard/item-delete/:id',
+	isLoggedIn,
+	dashboardController.dashboardDeleteNote
+);
 
 module.exports = router;
