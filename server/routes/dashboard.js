@@ -12,7 +12,7 @@ router.get(
 	isLoggedIn,
 	dashboardController.dashboardViewNote
 );
-router.post(
+router.put(
 	'/dashboard/item/:id',
 	isLoggedIn,
 	dashboardController.dashboardUpdateNote
