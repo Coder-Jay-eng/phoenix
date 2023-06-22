@@ -129,3 +129,41 @@ exports.dashboardAddNoteSubmit = async (req, res) => {
 		console.log('error');
 	}
 };
+
+/**
+ * GET /
+ * Search
+ */
+exports.dashboardSearch = async (req, res) => {
+	try {
+		res.render('dashboard/search', {
+			searchResults: '',
+			layout: '../views/layouts/dashboard',
+		});
+	} catch (error) {}
+};
+
+/**
+ * POST /
+ * Search For Notes
+ */
+exports.dashboardSearchSubmit = async (req, res) => {
+	try {
+		let searchTerm = req.body.searchTerm;
+		const searchNoSpecialChars = searchTerm.replace(/[^a-zA-Z0-9 ]/g, '');
+
+		const searchResults = await Note.find({
+			$or: [
+				{ title: { $regex: new RegExp(searchNoSpecialChars, 'i') } },
+				{ body: { $regex: new RegExp(searchNoSpecialChars, 'i') } },
+			],
+		}).where({ user: req.user.id });
+
+		res.render('dashboard/search', {
+			searchResults,
+			layout: '../views/layouts/dashboard',
+		});
+	} catch (error) {
+		console.log(error);
+	}
+};

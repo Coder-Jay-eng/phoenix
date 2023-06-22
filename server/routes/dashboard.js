@@ -23,6 +23,20 @@ router.delete(
 	dashboardController.dashboardDeleteNote
 );
 router.get('/dashboard/add', isLoggedIn, dashboardController.dashboardAddNote);
-router.post('/dashboard/add', isLoggedIn, dashboardController.dashboardAddNoteSubmit);
+router.post(
+	'/dashboard/add',
+	isLoggedIn,
+	dashboardController.dashboardAddNoteSubmit
+);
+router.get(
+	'/dashboard/search',
+	isLoggedIn,
+	dashboardController.dashboardSearch
+);
+router.post(
+	'/dashboard/search',
+	isLoggedIn,
+	dashboardController.dashboardSearchSubmit
+);
 
 module.exports = router;
