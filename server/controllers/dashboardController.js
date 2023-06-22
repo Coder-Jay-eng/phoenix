@@ -83,6 +83,7 @@ exports.dashboardUpdateNote = async (req, res) => {
 			{
 				title: req.body.title,
 				body: req.body.body,
+				updatedAt: Date.now(),
 			}
 		).where({
 			user: req.user.id,

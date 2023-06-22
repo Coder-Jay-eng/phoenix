@@ -75,10 +75,11 @@ h1,h2,h3,h4,h5,h6 {
 @media (min-width: 1200px) {
 .home {
     background:
-        url(../img/human-1.svg) left bottom no-repeat,
-        url(../img/human-2.svg) right bottom no-repeat,
+        /* url(../img/glitter.gold-dots-celebration-background_53876-102661.avif) left bottom no-repeat, */
+        url(../img/glitter.gold-dots-celebration-background_53876-102661.avif) left top repeat,
         url(https://img.freepik.com/free-vector/ink-splash-duotone-stripe-background_1409-1379.jpg?size=626&ext=jpg&ga=GA1.2.1159658307.1686998035&semt=ais) left top repeat,
         var(--background-color)
+        
 }
 }
 
